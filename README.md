@@ -4,4 +4,3 @@ This system is a basic yet functional tool designed for handling orders in a res
 
 Technologies:
 * NodeJS - MySQL
-* Amazon Cloud Storage
