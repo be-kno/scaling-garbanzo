@@ -8,39 +8,43 @@ Technologies:
 * MongoDB Atlas: https://www.mongodb.com/docs/
 * Mongoose: https://mongoosejs.com/docs/guide.html
 
+## Project Structure:
+
+<pre>
 scaling-garbanzo/
 │
-├── node_modules/              # Módulos Node.js instalados
+├── node_modules/              <span style="color: blue;"># Node.js installed modules</span>
 │
-├── public/                    # Arquivos estáticos (CSS, JS, imagens)
-│   ├── css/                   # Folhas de estilo CSS
-│   ├── js/                    # Arquivos JavaScript
-│   └── img/                   # Imagens
+├── public/                    <span style="color: blue;"># Static files (CSS, JS, images)</span>
+│   ├── css/                   <span style="color: blue;"># CSS Stylesheets</span>
+│   ├── js/                    <span style="color: blue;"># JavaScript files</span>
+│   └── img/                   <span style="color: blue;"># Images</span>
 │
-├── views/                     # Templates EJS
-│   ├── partials/              # Partes reutilizáveis do template (cabeçalho, rodapé)
+├── views/                     <span style="color: blue;"># EJS Templates</span>
+│   ├── partials/              <span style="color: blue;"># Reusable template parts (header, footer)</span>
 │   │   ├── header.ejs
 │   │   └── footer.ejs
-│   ├── pages/                 # Páginas EJS
+│   ├── pages/                 <span style="color: blue;"># EJS Pages</span>
 │   │   ├── home.ejs
 │   │   ├── about.ejs
 │   │   └── contact.ejs
-│   └── index.ejs              # Página inicial
+│   └── index.ejs              <span style="color: blue;"># Home page</span>
 │
-├── models/                    # Modelos Mongoose (esquemas do MongoDB)
+├── models/                    <span style="color: blue;"># Mongoose Models (MongoDB schemas)</span>
 │   ├── user.js
 │   └── post.js
 │
-├── routes/                    # Rotas Express
-│   ├── index.js               # Rotas principais
-│   ├── users.js               # Rotas de usuários
-│   └── posts.js               # Rotas de posts
+├── routes/                    <span style="color: blue;"># Express Routes</span>
+│   ├── index.js               <span style="color: blue;"># Main routes</span>
+│   ├── users.js               <span style="color: blue;"># User routes</span>
+│   └── posts.js               <span style="color: blue;"># Post routes</span>
 │
-├── config/                    # Configurações do projeto (banco de dados, etc.)
+├── config/                    <span style="color: blue;"># Project configurations (database, etc.)</span>
 │   ├── db.js
 │   └── auth.js
 │
-├── app.js                     # Ponto de entrada da aplicação
-├── package.json               # Metadados do projeto e dependências
-├── .env                       # Variáveis de ambiente (não deve ser versionado)
-└── README.md                  # Documentação do projeto
+├── app.js                     <span style="color: blue;"># Application entry point</span>
+├── package.json               <span style="color: blue;"># Project metadata and dependencies</span>
+├── .env                       <span style="color: blue;"># Environment variables (should not be versioned)</span>
+└── README.md                  <span style="color: blue;"># Project documentation</span>
+</pre>
