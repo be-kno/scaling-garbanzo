@@ -2,13 +2,15 @@ import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 
+import orderRoutes from './routes/ordersRoutes.js';
+
 const app = express();
 const port = process.env.PORT || 3000;
-
+const orderRoutes = 
 dotenv.config();
 
-app.use(express.json());
 app.set('view engine', 'ejs');
+app.use(express.json());
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB :D '))
@@ -17,6 +19,9 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 app.get('/', (req, res) => {
     res.render("index")
 });
+
+app.use('/orders', orderRoutes);
+
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`)
