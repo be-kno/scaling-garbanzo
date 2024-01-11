@@ -10,18 +10,19 @@ dotenv.config();
 
 app.set('view engine', 'ejs');
 app.use(express.json());
+app.use(express.static('public'));
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB :D '))
   .catch(err => console.error('Could not connect to MongoDB :( '));
 
 app.get('/', (req, res) => {
-    res.render("index")
+  res.render("index")
 });
 
 app.use('/orders', orderRoutes);
 
 
 app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`)
+  console.log(`Server running at http://localhost:${port}`)
 });
