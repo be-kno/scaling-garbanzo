@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Scaling Garbanzo</title>
+</head>
+
+<body>
+    <h1>Server Status</h1>
+    <table border="1">
+        <tr>
+            <th>Metric</th>
+            <th>Value</th>
+        </tr>
+        <% for(const key in serverInfo) { %>
+            <tr>
+                <td>
+                    <%= key %>
+                </td>
+                <td>
+                    <%= JSON.stringify(serverInfo[key]) %>
+                </td>
+            </tr>
+            <% } %>
+    </table>
+</body>
+
+</html>

@@ -16,13 +16,21 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
   .then(() => console.log('Connected to MongoDB :D '))
   .catch(err => console.error('Could not connect to MongoDB :( '));
 
-app.get('/', (req, res) => {
-  res.render("index")
+  app.get('/', (req, res) => {
+    const serverInfo = {
+      name: "Scaling-Garbanzo",
+      description: "Restaurant Order Management System",
+      version: "1.0.0",
+      uptime: process.uptime(),
+      owner: "Bernardo Knoblauch"
+    };
+
+    res.render('status', { serverInfo });
 });
 
-app.use('/orders', orderRoutes);
+    app.use('/orders', orderRoutes);
 
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`)
-});
+}); 

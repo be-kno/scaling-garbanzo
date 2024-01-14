@@ -10,10 +10,10 @@ router.get('/', async (req, res) => {
 
     try {
         const orders = await Order.find()
-                                  .sort({ _id: 1 })
-                                  .limit(limit)
-                                  .skip(skipIndex)
-                                  .exec();
+            .sort({ _id: 1 })
+            .limit(limit)
+            .skip(skipIndex)
+            .exec();
 
         const total = await Order.countDocuments();
 
@@ -34,13 +34,13 @@ router.post('/', async (req, res) => {
         const savedOrder = await newOrder.save();
         return res.status(201).json(savedOrder);
     } catch (err) {
-        return res.status(400).json("Error: ", err);
+        res.status(400).json("Error: ", err);
     }
 });
 
 
 // NOT WORKING YET
-router.delete('/:id', async (req,res) => {
+router.delete('/:id', async (req, res) => {
     try {
         const order = await Order.findByIdAndDelete(req.params.id);
         if (!item) {
