@@ -27,7 +27,7 @@ mongoose.connect(process.env.MONGO_URI)
   .catch(err => console.error('Could not connect to MongoDB :( '));
 
 app.get('/', (req, res) => {
-
+  serverInfo.Uptime = process.uptime();
   res.render('status', { serverInfo });
 });
 
@@ -37,3 +37,7 @@ app.use('/orders', orderRoutes);
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`)
 }); 
+
+function getUptime() {
+  return process.uptime(); // Returns the uptime of the process in seconds
+}
