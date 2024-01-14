@@ -12,23 +12,26 @@ app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(express.static('public'));
 
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+const serverInfo = {
+  Project: "Scaling-Garbanzo",
+  Description: "Restaurant Order Management System",
+  Version: "1.0.0",
+  Uptime: process.uptime(),
+  Owner: "Bernardo Knoblauch"
+};
+
+if (process.env.NODE_ENV === 'development') console.table(serverInfo);
+
+mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('Connected to MongoDB :D '))
   .catch(err => console.error('Could not connect to MongoDB :( '));
 
-  app.get('/', (req, res) => {
-    const serverInfo = {
-      name: "Scaling-Garbanzo",
-      description: "Restaurant Order Management System",
-      version: "1.0.0",
-      uptime: process.uptime(),
-      owner: "Bernardo Knoblauch"
-    };
+app.get('/', (req, res) => {
 
-    res.render('status', { serverInfo });
+  res.render('status', { serverInfo });
 });
 
-    app.use('/orders', orderRoutes);
+app.use('/orders', orderRoutes);
 
 
 app.listen(port, () => {
