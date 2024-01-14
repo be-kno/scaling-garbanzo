@@ -1,5 +1,6 @@
 import express from 'express';
 import Order from '../models/Order.js';
+import {validateOrder} from '../middlewares/validateOrder.js'
 
 const router = express.Router();
 
@@ -28,7 +29,8 @@ router.get('/', async (req, res) => {
         res.status(500).send(err);
     }
 });
-router.post('/', async (req, res) => {
+
+router.post('/', validateOrder, async (req, res) => {
     try {
         const newOrder = new Order(req.body);
         const savedOrder = await newOrder.save();
