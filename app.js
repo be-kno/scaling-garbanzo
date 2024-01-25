@@ -12,6 +12,8 @@ app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(express.static('public'));
 
+// ! fix: getUptime function
+
 const serverInfo = {
   Project: "Scaling-Garbanzo",
   Description: "Restaurant Order Management System",
@@ -39,5 +41,5 @@ app.listen(port, () => {
 }); 
 
 function getUptime() {
-  return process.uptime(); // Returns the uptime of the process in seconds
+  return process.uptime();
 }
