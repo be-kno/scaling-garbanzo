@@ -7,6 +7,9 @@ Technologies:
 * Express: https://expressjs.com/
 * MongoDB Atlas: https://www.mongodb.com/docs/
 * Mongoose: https://mongoosejs.com/docs/guide.html
+* EJS:
+* Jest: 
+
 
 ## Project Structure:
 
