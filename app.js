@@ -24,9 +24,19 @@ const serverInfo = {
 
 if (process.env.NODE_ENV === 'development') console.table(serverInfo);
 
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log('Connected to MongoDB :D '))
-  .catch(err => console.error('Could not connect to MongoDB :( '));
+async function connectToDatabase() {
+  try {
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log('Connected to MongoDB :D');
+  } catch (err) {
+    console.error('Could not connect to MongoDB :(', err);
+    // Handle the error appropriately
+    // For instance, you might want to exit the process if the database connection is essential
+    process.exit(1);
+  }
+}
+
+connectToDatabase();
 
 app.get('/', (req, res) => {
   serverInfo.Uptime = process.uptime();
@@ -35,11 +45,8 @@ app.get('/', (req, res) => {
 
 app.use('/orders', orderRoutes);
 
-
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`)
-}); 
-
 function getUptime() {
   return process.uptime();
 }
+
+export default app;

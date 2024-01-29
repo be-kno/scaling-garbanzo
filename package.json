@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Restaurant Order Management System",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon app.js",
-    "start": "cross-env NODE_ENV=production app.js"
+    "dev": "cross-env NODE_ENV=development nodemon server.js",
+    "start": "cross-env NODE_ENV=production server.js",
+    "test": "jest"
   },
   "author": "Bernardo Knoblauch",
   "license": "UNLICENSED",
@@ -19,13 +20,15 @@
     "mongoose": "^8.0.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.23.9",
+    "@babel/plugin-transform-modules-commonjs": "^7.23.3",
+    "@babel/preset-env": "^7.23.9",
+    "babel-jest": "^29.7.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.56.0",
     "jest": "^29.7.0",
     "nodemon": "^3.0.2",
-    "prettier": "^3.1.1"
-  },
-  "jest": {
-    "testEnvironment": "node"
+    "prettier": "^3.1.1",
+    "supertest": "^6.3.4"
   }
 }
