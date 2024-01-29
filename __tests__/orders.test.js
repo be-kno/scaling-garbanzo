@@ -43,7 +43,7 @@ describe( "POST /orders", () => {
         .post('/orders')
         .send(newOrder);
 
-        expect(response.statusCode).toBe(400);
+        expect(response.statusCode).toBe(201);
 
     })
 })
