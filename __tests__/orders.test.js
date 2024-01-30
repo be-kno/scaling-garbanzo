@@ -1,19 +1,11 @@
 import request from 'supertest';
 import app from '../app.js';
-import mongoose from 'mongoose';
-
-beforeAll(async () => {
-  await mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
-});
-
-afterAll(async () => {
-  await mongoose.disconnect();
-});
 
 describe( "POST /orders", () => {
     it("should create a new order and return 201 status code", async () => {
-        const newOrder = {
-            CustomerName: "Bob Brown",
+      
+      const newOrder = {
+            customerName: "Jest Brown",
             tableNumber: 13,
             orderDetails: [
                 {
@@ -41,7 +33,8 @@ describe( "POST /orders", () => {
 
         const response = await request(app)
         .post('/orders')
-        .send(newOrder);
+        .send(newOrder)
+        .set('Accept', 'application/json');
 
         expect(response.statusCode).toBe(201);
 

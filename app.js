@@ -1,11 +1,10 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import { dbconnection } from './db/config.js';
+import { dbConnection } from './db/config.js';
 
 import orderRoutes from './routes/orderRoutes.js';
 
 const app = express();
-const port = process.env.PORT || 3000;
 dotenv.config();
 
 app.set('view engine', 'ejs');
@@ -24,11 +23,11 @@ const serverInfo = {
 
 if (process.env.NODE_ENV === 'development') console.table(serverInfo);
 
-dbconnection();
+dbConnection();
 
 app.get('/', (req, res) => {
   serverInfo.Uptime = process.uptime();
-  res.render('status', { serverInfo });
+  res.status(200).render('status', { serverInfo });
 });
 
 app.use('/orders', orderRoutes);
